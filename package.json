@@ -1,6 +1,6 @@
 {
   "name": "bagy-sidecart-atacado",
-  "version": "1.2.0",
+  "version": "1.3.0",
   "description": "Carrinho lateral (SideCart) genérico para lojas de atacado em Bagy/Dooca. Arquitetura base + override; pedido mínimo lido da plataforma.",
   "author": "APRENDA E CRESCE LTDA (CNPJ 39.827.887/0001-21)",
   "license": "SEE LICENSE IN LICENSE",

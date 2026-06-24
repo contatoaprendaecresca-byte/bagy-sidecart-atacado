@@ -87,6 +87,16 @@
   sideCart.lang.empty = CONFIG.messages.empty;
 
   /* ----------------------------------------------------------------------
+   * Fechamento robusto do carrinho
+   * "Continuar Comprando" (.btn-back) e o X do topo fecham o carrinho.
+   * Handler delegado no document (independe da ordem de inicialização da base).
+   * -------------------------------------------------------------------- */
+  $(document).on('click', '#sideCart .btn-back, #sideCart .sideCart-header button', function (e) {
+    e.preventDefault();
+    $('body').removeClass('sideCart-open');
+  });
+
+  /* ----------------------------------------------------------------------
    * Pedido mínimo de atacado (lido da plataforma)
    * -------------------------------------------------------------------- */
   sideCart.minPurchaseValue = function () {

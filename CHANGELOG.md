@@ -1,5 +1,14 @@
 # Changelog
 
+## 1.3.0
+
+- "Continuar Comprando" agora é um **botão de verdade**: borda, largura total e
+  preenchimento (fundo escuro/fonte branca) no hover/foco.
+- **Fechamento robusto**: handler explícito no override garante que o botão
+  "Continuar Comprando" (e o X do topo) feche o carrinho lateral, independente da
+  ordem de inicialização da base.
+- URLs de instalação atualizadas para `@1.3.0`.
+
 ## 1.2.0
 
 - Aviso de pedido mínimo com **muito mais destaque**: container âmbar/amarelo, texto

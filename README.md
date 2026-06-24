@@ -28,9 +28,9 @@ Cole no campo de Scripts da Bagy (Rodapé · Essencial · Tipo: Script):
 
 ```html
 <!-- START AEC SIDE CART -->
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/contatoaprendaecresca-byte/bagy-sidecart-atacado@1.2.0/dist/aec-sidecart.min.css">
-<script src="https://cdn.jsdelivr.net/gh/contatoaprendaecresca-byte/bagy-sidecart-atacado@1.2.0/dist/aec-sidecart-base.min.js" charset="utf-8"></script>
-<script src="https://cdn.jsdelivr.net/gh/contatoaprendaecresca-byte/bagy-sidecart-atacado@1.2.0/dist/aec-sidecart-override.min.js" charset="utf-8"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/contatoaprendaecresca-byte/bagy-sidecart-atacado@1.3.0/dist/aec-sidecart.min.css">
+<script src="https://cdn.jsdelivr.net/gh/contatoaprendaecresca-byte/bagy-sidecart-atacado@1.3.0/dist/aec-sidecart-base.min.js" charset="utf-8"></script>
+<script src="https://cdn.jsdelivr.net/gh/contatoaprendaecresca-byte/bagy-sidecart-atacado@1.3.0/dist/aec-sidecart-override.min.js" charset="utf-8"></script>
 <!-- END AEC SIDE CART -->
 ```
 
