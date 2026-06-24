@@ -28,8 +28,8 @@ Defina `window.SIDECART_ATACADO` **antes** de carregar os scripts (base + overri
     }
   };
 </script>
-<script src="https://cdn.jsdelivr.net/gh/contatoaprendaecresca-byte/bagy-sidecart-atacado@1.1.0/dist/aec-sidecart-base.min.js"></script>
-<script src="https://cdn.jsdelivr.net/gh/contatoaprendaecresca-byte/bagy-sidecart-atacado@1.1.0/dist/aec-sidecart-override.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/contatoaprendaecresca-byte/bagy-sidecart-atacado@1.2.0/dist/aec-sidecart-base.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/contatoaprendaecresca-byte/bagy-sidecart-atacado@1.2.0/dist/aec-sidecart-override.min.js"></script>
 ```
 
 > A configuração (`window.SIDECART_ATACADO`) deve vir **antes** dos scripts; e o

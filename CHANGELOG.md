@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.2.0
+
+- Aviso de pedido mínimo com **muito mais destaque**: container âmbar/amarelo, texto
+  escuro, ícone de aviso (⚠️) e o **valor que falta em vermelho/negrito**.
+- Novas variáveis de tema (`--aec-min-bg`, `--aec-min-border`, `--aec-min-accent`,
+  `--aec-min-text`, `--aec-min-missing`) para ajustar o visual sem editar o CSS.
+- URLs de instalação atualizadas para `@1.2.0`.
+
 ## 1.1.0
 
 Adoção da arquitetura **base + override** (espelha o padrão usado em produção, com risco

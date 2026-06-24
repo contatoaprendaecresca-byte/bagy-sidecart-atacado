@@ -26,6 +26,12 @@
     --aec-ok-bg: #e8f6ec;
     --aec-ok-border: #87c79a;
     --aec-ok-text: #2c7a3f;
+    /* Aviso de pedido mínimo — container âmbar com texto escuro e valor em destaque. */
+    --aec-min-bg: #fff8e1;
+    --aec-min-border: #ffe082;
+    --aec-min-accent: #f5a623;
+    --aec-min-text: #5f4b00;
+    --aec-min-missing: #c0392b;
 }
 
 /* ==========================================================
@@ -231,20 +237,34 @@ body.modal-open { overflow: auto !important; }
    PEDIDO MÍNIMO DE ATACADO
    ========================================================== */
 #sideCart .aec-sidecart-min-purchase {
-    background: var(--aec-danger-bg);
-    border: 1px solid var(--aec-danger-border);
+    background: var(--aec-min-bg);
+    border: 1px solid var(--aec-min-border);
+    border-left: 4px solid var(--aec-min-accent);
     border-radius: .5rem;
-    padding: .85rem 1rem;
+    padding: .9rem 1rem;
     margin-top: .75rem;
-    line-height: 1.35;
+    line-height: 1.45;
     text-align: center;
+    color: var(--aec-min-text);
 }
 #sideCart .aec-sidecart-min-purchase small { font-size: 13px; }
 
-#sideCart .aec-sidecart-min-purchase__value,
-#sideCart .aec-sidecart-min-purchase__missing {
-    color: var(--aec-highlight) !important;
+/* Ícone de aviso apenas quando o mínimo ainda NÃO foi atingido */
+#sideCart .aec-sidecart-min-purchase:not(.aec-sidecart-min-purchase--ok) small::before {
+    content: "⚠️ ";
+}
+
+#sideCart .aec-sidecart-min-purchase__value {
+    color: var(--aec-min-text) !important;
     font-weight: 700;
+}
+
+/* Valor que falta — vermelho, em destaque */
+#sideCart .aec-sidecart-min-purchase__missing {
+    display: inline-block;
+    color: var(--aec-min-missing) !important;
+    font-weight: 800;
+    font-size: 15px;
 }
 
 /* Estado: pedido mínimo já atingido */

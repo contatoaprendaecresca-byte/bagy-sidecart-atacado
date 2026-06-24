@@ -44,13 +44,13 @@ também em [`examples/bagy-script-rodape.html`](../examples/bagy-script-rodape.h
 
 ```html
 <!-- START AEC SIDE CART -->
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/contatoaprendaecresca-byte/bagy-sidecart-atacado@1.1.0/dist/aec-sidecart.min.css">
-<script src="https://cdn.jsdelivr.net/gh/contatoaprendaecresca-byte/bagy-sidecart-atacado@1.1.0/dist/aec-sidecart-base.min.js" charset="utf-8"></script>
-<script src="https://cdn.jsdelivr.net/gh/contatoaprendaecresca-byte/bagy-sidecart-atacado@1.1.0/dist/aec-sidecart-override.min.js" charset="utf-8"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/contatoaprendaecresca-byte/bagy-sidecart-atacado@1.2.0/dist/aec-sidecart.min.css">
+<script src="https://cdn.jsdelivr.net/gh/contatoaprendaecresca-byte/bagy-sidecart-atacado@1.2.0/dist/aec-sidecart-base.min.js" charset="utf-8"></script>
+<script src="https://cdn.jsdelivr.net/gh/contatoaprendaecresca-byte/bagy-sidecart-atacado@1.2.0/dist/aec-sidecart-override.min.js" charset="utf-8"></script>
 <!-- END AEC SIDE CART -->
 ```
 
-> Fixe a versão (`@1.1.0`) para evitar quebras quando houver atualização. Para forçar
+> Fixe a versão (`@1.2.0`) para evitar quebras quando houver atualização. Para forçar
 > atualização imediata em todas as lojas, use `@latest` (com cache do jsDelivr).
 
 ---
