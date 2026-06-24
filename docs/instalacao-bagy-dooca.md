@@ -11,16 +11,31 @@ Guia para aplicar o **Bagy SideCart Atacado** em qualquer loja de atacado.
 
 ---
 
-## Opção A — Via CDN (repositório público)
+## Onde inserir (UI da Bagy)
 
-Mesmo método do carrinho externo antigo. Adicione no tema:
+Painel Bagy → **Loja → Scripts** (área de "Inserir script"). Crie um script com:
+
+| Campo | Valor |
+|---|---|
+| **Onde inserir na página** | Rodapé (recomendado) |
+| **Categoria do script** | Essencial |
+| **Tipo do script** | Script |
+
+No campo de conteúdo, cole o bloco abaixo. É o **mesmo método** usado hoje — só muda o
+conteúdo (mais curto e sem depender de terceiro).
+
+---
+
+## Opção A — Via CDN (repositório público) — recomendado
+
+Cole este bloco no conteúdo do script (Rodapé · Essencial · Tipo: Script). Bloco pronto
+também em [`examples/bagy-script-rodape.html`](../examples/bagy-script-rodape.html).
 
 ```html
-<!-- 3. CSS do SideCart -->
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/<org>/bagy-sidecart-atacado@1.0.0/dist/aec-sidecart.min.css">
-
-<!-- 4. JS do SideCart -->
-<script src="https://cdn.jsdelivr.net/gh/<org>/bagy-sidecart-atacado@1.0.0/dist/aec-sidecart.min.js" charset="utf-8"></script>
+<!-- START AEC SIDE CART -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/contatoaprendaecresca-byte/bagy-sidecart-atacado@1.0.0/dist/aec-sidecart.min.css">
+<script src="https://cdn.jsdelivr.net/gh/contatoaprendaecresca-byte/bagy-sidecart-atacado@1.0.0/dist/aec-sidecart.min.js" charset="utf-8"></script>
+<!-- END AEC SIDE CART -->
 ```
 
 > Fixe a versão (`@1.0.0`) para evitar quebras quando houver atualização. Para forçar
@@ -28,26 +43,28 @@ Mesmo método do carrinho externo antigo. Adicione no tema:
 
 ---
 
-## Opção B — Colando no tema (repositório privado)
+## Opção B — Colando o código (repositório privado / sem CDN)
 
-1. Painel Bagy → **Loja → Tema → Editar código**.
-2. Cole o conteúdo de `dist/aec-sidecart.min.css` **depois** do CSS do tema.
-3. Cole o conteúdo de `dist/aec-sidecart.min.js` dentro de uma tag `<script>` no rodapé.
-4. Salve e publique.
+Se preferir não usar CDN, no mesmo campo (Rodapé · Essencial · Tipo: Script) cole:
+
+1. `<style>` + o conteúdo de `dist/aec-sidecart.min.css` dentro dele;
+2. `<script>` + o conteúdo de `dist/aec-sidecart.min.js` dentro dele.
 
 ---
 
 ## Importante: remover o carrinho antigo
 
-Se a loja já usava um carrinho externo (ex.: `bagy_sidecart_pro.js` de terceiro) **e/ou**
-um override inline de pedido mínimo no tema, **remova-os**. Caso contrário, dois carrinhos
-serão carregados e podem conflitar.
+Antes (ou ao salvar este), **remova o script antigo** que carrega o carrinho de terceiro —
+normalmente o bloco entre `<!-- START APX SIDE CART -->` e `<!-- END APX SIDE CART -->`.
+Caso contrário, dois carrinhos são carregados e podem conflitar.
 
-Procure no tema e remova:
+Esse bloco antigo contém:
 
-- `<script src="...cdn.jsdelivr.net/gh/eduvlemes/sideCart/...">`
-- `<link ...bagy_sidecart.css>`
-- Qualquer bloco inline que redefina `sideCart.placeContent`.
+- `<script src="...cdn.jsdelivr.net/gh/eduvlemes/sideCart/bagy_sidecart_pro.js">`
+- O `<script>` inline que redefine `sideCart.placeContent`
+- `<link ...bagy_sidecart.css>` e um `<style>` do `.alert-danger`
+
+Tudo isso é substituído pelo bloco AEC (2 linhas).
 
 ---
 

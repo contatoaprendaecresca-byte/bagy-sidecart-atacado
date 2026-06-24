@@ -1,0 +1,38 @@
+<!--
+  BLOCO PRONTO PARA COLAR NA BAGY
+  ================================
+  Painel Bagy → Loja → Scripts (ou "Inserir script"):
+    • ONDE INSERIR NA PÁGINA: Rodapé (recomendado)
+    • CATEGORIA DO SCRIPT:    Essencial
+    • TIPO DO SCRIPT:         Script
+
+  Cole TODO o bloco abaixo no campo de conteúdo do script.
+  Substitua a versão (@1.0.0) se quiser fixar outra.
+
+  IMPORTANTE: remova o bloco antigo "APX SIDE CART" (o que carrega
+  cdn.jsdelivr.net/gh/eduvlemes/...) para não rodar dois carrinhos.
+-->
+
+<!-- START AEC SIDE CART -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/contatoaprendaecresca-byte/bagy-sidecart-atacado@1.0.0/dist/aec-sidecart.min.css">
+<script src="https://cdn.jsdelivr.net/gh/contatoaprendaecresca-byte/bagy-sidecart-atacado@1.0.0/dist/aec-sidecart.min.js" charset="utf-8"></script>
+<!-- END AEC SIDE CART -->
+
+
+<!--
+  (OPCIONAL) Personalização — cole ANTES do <script> acima se quiser
+  mudar textos/cores ou exibir o aviso na página de produto:
+
+  <style>
+    :root {
+      --aec-product-notice: "Site Atacado • Pedido mínimo de R$ 400,00";
+      --aec-product-notice-mobile: "Atacado • Pedido mínimo R$ 400,00";
+    }
+  </style>
+  <script>
+    window.SIDECART_ATACADO = {
+      minPurchase: null, // null = usa o mínimo definido no admin da loja
+      messages: { minLabel: 'Pedido mínimo atacado:' }
+    };
+  </script>
+-->
