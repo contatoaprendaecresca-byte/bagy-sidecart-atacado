@@ -23,29 +23,29 @@ automaticamente da plataforma** — nenhuma loja precisa de configuração para 
 Mesmo método de hoje: incluir o CSS e o JS no tema da loja. **Sem configuração**, já
 funciona — o pedido mínimo vem da plataforma.
 
-### Via CDN (jsDelivr) — recomendado se o repositório for público
+Arquitetura **base + override** (igual à de hoje): CSS, depois a base, depois o override.
+Cole no campo de Scripts da Bagy (Rodapé · Essencial · Tipo: Script):
 
 ```html
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/<org>/bagy-sidecart-atacado@1.0.0/dist/aec-sidecart.min.css">
-<script src="https://cdn.jsdelivr.net/gh/<org>/bagy-sidecart-atacado@1.0.0/dist/aec-sidecart.min.js" charset="utf-8"></script>
+<!-- START AEC SIDE CART -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/contatoaprendaecresca-byte/bagy-sidecart-atacado@1.1.0/dist/aec-sidecart.min.css">
+<script src="https://cdn.jsdelivr.net/gh/contatoaprendaecresca-byte/bagy-sidecart-atacado@1.1.0/dist/aec-sidecart-base.min.js" charset="utf-8"></script>
+<script src="https://cdn.jsdelivr.net/gh/contatoaprendaecresca-byte/bagy-sidecart-atacado@1.1.0/dist/aec-sidecart-override.min.js" charset="utf-8"></script>
+<!-- END AEC SIDE CART -->
 ```
 
-### Colando no tema — se o repositório for privado
+> Ao adotar esta versão, **remova do tema** o carrinho externo antigo (bloco
+> `APX SIDE CART` que carrega o `bagy_sidecart_pro.js`/`.css` de terceiros e o override
+> inline), para não carregar dois carrinhos. Passo a passo em
+> [`docs/instalacao-bagy-dooca.md`](docs/instalacao-bagy-dooca.md).
 
-Cole o conteúdo de `dist/aec-sidecart.min.css` no CSS do tema e o de
-`dist/aec-sidecart.min.js` dentro de uma tag `<script>`. Passo a passo completo em
-[`docs/instalacao-bagy-dooca.md`](docs/instalacao-bagy-dooca.md).
-
-> Ao adotar esta versão, **remova do tema** a referência ao carrinho externo antigo
-> (o `bagy_sidecart_pro.js`/`.css` do CDN de terceiros e qualquer override inline),
-> para não carregar dois carrinhos.
-
-### Ordem recomendada de carregamento
+### Ordem de carregamento (importa)
 
 1. CSS base do tema
 2. CSS customizado da loja
 3. CSS do Bagy SideCart Atacado
-4. JS do Bagy SideCart Atacado
+4. **Base** do SideCart (`aec-sidecart-base.min.js`)
+5. **Override** do SideCart (`aec-sidecart-override.min.js`) — depois da base
 
 ## Configuração (opcional)
 
@@ -80,10 +80,10 @@ npm run build   # gera dist/ a partir de src/
 ```
 bagy-sidecart-atacado/
 ├── README.md, CHANGELOG.md, LICENSE, LICENSE-NOTES.md, package.json
-├── src/   → aec-sidecart.{js,css}        (fonte)
-├── dist/  → aec-sidecart.min.{js,css}    (gerado)
+├── src/   → aec-sidecart-base.js, aec-sidecart-override.js, aec-sidecart.css
+├── dist/  → aec-sidecart-base.min.js, aec-sidecart-override.min.js, aec-sidecart.min.css
 ├── docs/  → instalacao-bagy-dooca.md, configuracao.md, engenharia-reversa.md
-├── examples/ → config-exemplo.html
+├── examples/ → bagy-script-rodape.html, config-exemplo.html
 └── reference/ → snapshots da engenharia reversa (não usado em produção)
 ```
 

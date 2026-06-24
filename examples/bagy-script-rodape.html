@@ -7,20 +7,24 @@
     • TIPO DO SCRIPT:         Script
 
   Cole TODO o bloco abaixo no campo de conteúdo do script.
-  Substitua a versão (@1.0.0) se quiser fixar outra.
+
+  Arquitetura igual à de hoje: BASE + OVERRIDE + CSS (a ordem importa —
+  o override deve vir DEPOIS da base). A diferença é que tudo vem do
+  repositório da AEC, sem depender de terceiros.
 
   IMPORTANTE: remova o bloco antigo "APX SIDE CART" (o que carrega
   cdn.jsdelivr.net/gh/eduvlemes/...) para não rodar dois carrinhos.
 -->
 
 <!-- START AEC SIDE CART -->
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/contatoaprendaecresca-byte/bagy-sidecart-atacado@1.0.0/dist/aec-sidecart.min.css">
-<script src="https://cdn.jsdelivr.net/gh/contatoaprendaecresca-byte/bagy-sidecart-atacado@1.0.0/dist/aec-sidecart.min.js" charset="utf-8"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/contatoaprendaecresca-byte/bagy-sidecart-atacado@1.1.0/dist/aec-sidecart.min.css">
+<script src="https://cdn.jsdelivr.net/gh/contatoaprendaecresca-byte/bagy-sidecart-atacado@1.1.0/dist/aec-sidecart-base.min.js" charset="utf-8"></script>
+<script src="https://cdn.jsdelivr.net/gh/contatoaprendaecresca-byte/bagy-sidecart-atacado@1.1.0/dist/aec-sidecart-override.min.js" charset="utf-8"></script>
 <!-- END AEC SIDE CART -->
 
 
 <!--
-  (OPCIONAL) Personalização — cole ANTES do <script> acima se quiser
+  (OPCIONAL) Personalização — cole ANTES dos <script> acima se quiser
   mudar textos/cores ou exibir o aviso na página de produto:
 
   <style>

@@ -6,7 +6,7 @@ O script funciona **sem nenhuma configuração** — o pedido mínimo vem da pla
 
 ## Como configurar
 
-Defina `window.SIDECART_ATACADO` **antes** de carregar o `aec-sidecart.min.js`:
+Defina `window.SIDECART_ATACADO` **antes** de carregar os scripts (base + override):
 
 ```html
 <script>
@@ -28,8 +28,12 @@ Defina `window.SIDECART_ATACADO` **antes** de carregar o `aec-sidecart.min.js`:
     }
   };
 </script>
-<script src="https://cdn.jsdelivr.net/gh/<org>/bagy-sidecart-atacado@1.0.0/dist/aec-sidecart.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/contatoaprendaecresca-byte/bagy-sidecart-atacado@1.1.0/dist/aec-sidecart-base.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/contatoaprendaecresca-byte/bagy-sidecart-atacado@1.1.0/dist/aec-sidecart-override.min.js"></script>
 ```
+
+> A configuração (`window.SIDECART_ATACADO`) deve vir **antes** dos scripts; e o
+> override deve vir **depois** da base.
 
 ## Opções
 

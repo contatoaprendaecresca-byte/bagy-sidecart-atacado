@@ -1,16 +1,16 @@
 <!--
-  Exemplo de aplicação do Bagy SideCart Atacado no tema de uma loja.
+  Exemplo de aplicação do Bagy SideCart Atacado COM configuração.
 
-  Cole no rodapé do tema (Bagy → Loja → Tema → Editar código).
+  Cole no campo de Scripts da Bagy (Rodapé · Essencial · Tipo: Script).
   O bloco de configuração é OPCIONAL — sem ele, o carrinho já funciona e
   o pedido mínimo vem da plataforma (cartInfo.min_purchase).
 
-  Substitua <org> pela organização/usuário do GitHub onde o repositório está publicado.
+  Ordem: CSS → (config) → BASE → OVERRIDE.
 -->
 
 <!-- 3. CSS do SideCart (depois do CSS do tema) -->
 <link rel="stylesheet"
-      href="https://cdn.jsdelivr.net/gh/<org>/bagy-sidecart-atacado@1.0.0/dist/aec-sidecart.min.css">
+      href="https://cdn.jsdelivr.net/gh/contatoaprendaecresca-byte/bagy-sidecart-atacado@1.1.0/dist/aec-sidecart.min.css">
 
 <!-- (Opcional) Aviso na página de produto -->
 <style>
@@ -20,7 +20,7 @@
   }
 </style>
 
-<!-- (Opcional) Configuração de textos/valores -->
+<!-- (Opcional) Configuração de textos/valores — ANTES dos scripts -->
 <script>
   window.SIDECART_ATACADO = {
     // null = usa o pedido mínimo definido no admin da loja (recomendado).
@@ -34,6 +34,10 @@
   };
 </script>
 
-<!-- 4. JS do SideCart (por último) -->
-<script src="https://cdn.jsdelivr.net/gh/<org>/bagy-sidecart-atacado@1.0.0/dist/aec-sidecart.min.js"
+<!-- 4. BASE do SideCart -->
+<script src="https://cdn.jsdelivr.net/gh/contatoaprendaecresca-byte/bagy-sidecart-atacado@1.1.0/dist/aec-sidecart-base.min.js"
+        charset="utf-8"></script>
+
+<!-- 5. OVERRIDE do SideCart (depois da base) -->
+<script src="https://cdn.jsdelivr.net/gh/contatoaprendaecresca-byte/bagy-sidecart-atacado@1.1.0/dist/aec-sidecart-override.min.js"
         charset="utf-8"></script>

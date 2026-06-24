@@ -1,5 +1,20 @@
 # Changelog
 
+## 1.1.0
+
+Adoção da arquitetura **base + override** (espelha o padrão usado em produção, com risco
+de comportamento mínimo).
+
+- `src/aec-sidecart-base.js`: cópia fiel da lógica original (não alterar) + cabeçalho AEC.
+- `src/aec-sidecart-override.js`: todas as melhorias (pedido mínimo da plataforma, classes
+  próprias, acessibilidade, HTML limpo, configuração) redefinindo `placeContent`.
+- Validação `window.sideCart` no override antes de sobrescrever (base obrigatória antes).
+- Instalação via 3 arquivos (CSS → base → override), no campo Scripts da Bagy
+  (Rodapé · Essencial · Tipo: Script).
+- Removida a variante standalone (`aec-sidecart.js`) para evitar divergência.
+- Teste de integração (sandbox) cobrindo: abaixo do mínimo, mínimo atingido, loja sem
+  mínimo e carrinho vazio.
+
 ## 1.0.0
 
 Primeira versão genérica do **Bagy SideCart Atacado** (APRENDA E CRESCE LTDA).

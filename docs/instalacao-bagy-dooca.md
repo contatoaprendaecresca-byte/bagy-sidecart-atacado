@@ -26,6 +26,17 @@ conteúdo (mais curto e sem depender de terceiro).
 
 ---
 
+## Arquitetura: base + override
+
+Igual ao padrão usado hoje. São **três arquivos**, e a **ordem importa**:
+
+1. **CSS** — `aec-sidecart.min.css`
+2. **Base** — `aec-sidecart-base.min.js` (a lógica do carrinho)
+3. **Override** — `aec-sidecart-override.min.js` (melhorias + pedido mínimo) — **depois da base**
+
+A base é uma cópia fiel da lógica original (risco mínimo); todas as melhorias ficam no
+override, que valida a base antes de aplicar.
+
 ## Opção A — Via CDN (repositório público) — recomendado
 
 Cole este bloco no conteúdo do script (Rodapé · Essencial · Tipo: Script). Bloco pronto
@@ -33,22 +44,24 @@ também em [`examples/bagy-script-rodape.html`](../examples/bagy-script-rodape.h
 
 ```html
 <!-- START AEC SIDE CART -->
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/contatoaprendaecresca-byte/bagy-sidecart-atacado@1.0.0/dist/aec-sidecart.min.css">
-<script src="https://cdn.jsdelivr.net/gh/contatoaprendaecresca-byte/bagy-sidecart-atacado@1.0.0/dist/aec-sidecart.min.js" charset="utf-8"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/contatoaprendaecresca-byte/bagy-sidecart-atacado@1.1.0/dist/aec-sidecart.min.css">
+<script src="https://cdn.jsdelivr.net/gh/contatoaprendaecresca-byte/bagy-sidecart-atacado@1.1.0/dist/aec-sidecart-base.min.js" charset="utf-8"></script>
+<script src="https://cdn.jsdelivr.net/gh/contatoaprendaecresca-byte/bagy-sidecart-atacado@1.1.0/dist/aec-sidecart-override.min.js" charset="utf-8"></script>
 <!-- END AEC SIDE CART -->
 ```
 
-> Fixe a versão (`@1.0.0`) para evitar quebras quando houver atualização. Para forçar
+> Fixe a versão (`@1.1.0`) para evitar quebras quando houver atualização. Para forçar
 > atualização imediata em todas as lojas, use `@latest` (com cache do jsDelivr).
 
 ---
 
 ## Opção B — Colando o código (repositório privado / sem CDN)
 
-Se preferir não usar CDN, no mesmo campo (Rodapé · Essencial · Tipo: Script) cole:
+Se preferir não usar CDN, no mesmo campo (Rodapé · Essencial · Tipo: Script) cole, **nesta ordem**:
 
-1. `<style>` + o conteúdo de `dist/aec-sidecart.min.css` dentro dele;
-2. `<script>` + o conteúdo de `dist/aec-sidecart.min.js` dentro dele.
+1. `<style>` + o conteúdo de `dist/aec-sidecart.min.css`;
+2. `<script>` + o conteúdo de `dist/aec-sidecart-base.min.js`;
+3. `<script>` + o conteúdo de `dist/aec-sidecart-override.min.js`.
 
 ---
 
