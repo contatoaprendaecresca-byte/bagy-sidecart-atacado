@@ -1,0 +1,345 @@
+/*!
+ * Bagy SideCart Atacado
+ * Carrinho lateral para lojas de atacado em Bagy/Dooca.
+ *
+ * © APRENDA E CRESCE LTDA — CNPJ 39.827.887/0001-21
+ *
+ * Genérico: usa os tokens de tema da própria loja (var(--color-*), var(--m-*)),
+ * então adapta-se às cores de qualquer loja Dooca automaticamente.
+ * Prefixo de classes próprias: aec-sidecart-
+ *
+ * Versão: 1.0.0
+ */
+
+/* ==========================================================
+   VARIÁVEIS CONFIGURÁVEIS POR LOJA
+   Sobrescreva no CSS do tema para personalizar sem editar este arquivo.
+   ========================================================== */
+:root {
+    /* Texto do aviso na página de produto (desktop e mobile). */
+    --aec-product-notice: "Atacado";
+    --aec-product-notice-mobile: var(--aec-product-notice);
+    /* Cor de destaque do aviso de pedido mínimo (fallback se o tema não definir). */
+    --aec-highlight: var(--color-highlight, #c0392b);
+    --aec-danger-bg: #f6e8e8;
+    --aec-danger-border: #ec8787;
+    --aec-ok-bg: #e8f6ec;
+    --aec-ok-border: #87c79a;
+    --aec-ok-text: #2c7a3f;
+}
+
+/* ==========================================================
+   ESTRUTURA BASE DO CARRINHO LATERAL
+   ========================================================== */
+body.modal-open { overflow: auto !important; }
+
+#sideCart {
+    position: fixed;
+    top: 0;
+    right: -400px;
+    z-index: 999;
+    height: 100dvh;
+    background: #fff;
+    width: 320px;
+    box-shadow: 0 0 30px rgba(0, 0, 0, .2);
+    display: flex;
+    flex-direction: column;
+    transition: right .3s;
+}
+.sideCart-open #sideCart { right: 0; }
+
+#sideCart .sideCart-header {
+    border-bottom: 1px solid var(--border-color);
+    padding: 1.2rem 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+#sideCart .sideCart-header span {
+    color: var(--color-primary);
+    font-weight: bold;
+}
+#sideCart .sideCart-header button {
+    padding: 0;
+    line-height: initial;
+    border: 0;
+    background: transparent;
+    font-size: 0;
+}
+#sideCart .sideCart-header button i {
+    font-size: 24px;
+    color: var(--color-secondary);
+}
+
+#sideCart .sideCart-content {
+    height: 100%;
+    overflow-x: hidden;
+    overflow-y: scroll;
+}
+#sideCart .sideCart-content .empty {
+    padding: 2rem;
+    color: var(--color-primary);
+    text-align: center;
+    font-weight: bold;
+}
+
+#sideCart .sideCart-content .sideCart-item {
+    margin-top: 1rem;
+    padding-right: 1rem;
+}
+#sideCart .sideCart-content .sideCart-item .title { font-size: 14px; }
+#sideCart .sideCart-item .name {
+    font-size: calc(var(--tx-fs) * .8);
+    line-height: 1.3;
+}
+
+#sideCart .sideCart-content .sideCart-item .sideCart-item-delete {
+    font-size: 0;
+    color: var(--color-primary);
+    border: 0;
+    padding: 0;
+    background: transparent;
+}
+#sideCart .sideCart-content .sideCart-item .sideCart-item-delete i { font-size: 14px; }
+
+#sideCart .sideCart-content .sideCart-item .sideCart-item-quantity {
+    border: solid .1rem #e1e1e1;
+    width: fit-content;
+    border-radius: .25rem !important;
+}
+#sideCart .sideCart-content .sideCart-item .sideCart-item-quantity button {
+    border: 0;
+    background: transparent;
+    line-height: initial;
+    font-size: 0;
+    color: var(--color-secondary);
+    width: 30px;
+    height: 30px;
+}
+#sideCart .sideCart-content .sideCart-item .sideCart-item-quantity button i { font-size: 14px; }
+#sideCart .sideCart-content .sideCart-item .sideCart-item-quantity input::-webkit-outer-spin-button,
+#sideCart .sideCart-content .sideCart-item .sideCart-item-quantity input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+#sideCart .sideCart-content .sideCart-item .sideCart-item-quantity input[type=number] {
+    -moz-appearance: textfield;
+}
+#sideCart .sideCart-content .sideCart-item .sideCart-item-quantity input {
+    border: 0;
+    text-align: center;
+    width: 30px;
+    min-width: 4rem;
+}
+#sideCart .sideCart-content .sideCart-item strong { font-size: 12px; }
+
+#sideCart .group-list p {
+    font-size: 11px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    margin: 0;
+}
+
+/* Selo de desconto do item (substitui o style inline original) */
+#sideCart .aec-sidecart-item__discount,
+#sideCart .aec-sidecart-item__discount i {
+    font-size: 10px;
+    color: var(--success, #2c7a3f);
+}
+
+#sideCart .sideCart-footer .sideCart-actions {
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+    padding: 1rem 1.5rem;
+}
+#sideCart .sideCart-footer .sideCart-actions .btn-checkout {
+    text-transform: initial;
+    color: #fff;
+    background: var(--color-secondary);
+    text-align: center;
+    padding: 1rem;
+    font-weight: 600;
+    border-radius: .25rem !important;
+}
+#sideCart .sideCart-footer .sideCart-actions .btn-back {
+    border: 0;
+    font-size: calc(var(--tx-fs) * .8);
+    padding: .5rem;
+    color: var(--color-primary);
+}
+#sideCart .sideCart-actions .btn,
+#sideCart .sideCart-actions button { width: 100%; }
+
+#sideCart .sideCart-footer .sideCart-values {
+    padding: 1rem 1.5rem;
+    color: var(--color-primary);
+    border-top: 1px solid var(--color-border);
+}
+#sideCart .sideCart-values .row { margin-bottom: .75rem; }
+
+#cart-redirect-modal { display: none !important; }
+
+/* Loader */
+.lds-ellipsis,
+.lds-ellipsis div { box-sizing: border-box; }
+.lds-ellipsis {
+    display: inline-block;
+    position: absolute;
+    width: 80px;
+    height: 80px;
+    top: 50%;
+    left: 50%;
+    translate: -50% -50%;
+}
+.lds-ellipsis div {
+    position: absolute;
+    top: 33.33333px;
+    width: 13.33333px;
+    height: 13.33333px;
+    border-radius: 50%;
+    background: #fff;
+    animation-timing-function: cubic-bezier(0, 1, 1, 0);
+}
+.lds-ellipsis div:nth-child(1) { left: 8px;  animation: lds-ellipsis1 .6s infinite; }
+.lds-ellipsis div:nth-child(2) { left: 8px;  animation: lds-ellipsis2 .6s infinite; }
+.lds-ellipsis div:nth-child(3) { left: 32px; animation: lds-ellipsis2 .6s infinite; }
+.lds-ellipsis div:nth-child(4) { left: 56px; animation: lds-ellipsis3 .6s infinite; }
+@keyframes lds-ellipsis1 { 0% { transform: scale(0); } 100% { transform: scale(1); } }
+@keyframes lds-ellipsis3 { 0% { transform: scale(1); } 100% { transform: scale(0); } }
+@keyframes lds-ellipsis2 { 0% { transform: translate(0, 0); } 100% { transform: translate(24px, 0); } }
+#sideCart .loading {
+    opacity: 0;
+    pointer-events: none;
+    display: none;
+    position: absolute;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    background: rgba(0, 0, 0, .3);
+    z-index: 10;
+}
+.updatingSideCart #sideCart .loading {
+    opacity: 1;
+    pointer-events: all;
+    display: block;
+}
+
+
+/* ==========================================================
+   PEDIDO MÍNIMO DE ATACADO
+   ========================================================== */
+#sideCart .aec-sidecart-min-purchase {
+    background: var(--aec-danger-bg);
+    border: 1px solid var(--aec-danger-border);
+    border-radius: .5rem;
+    padding: .85rem 1rem;
+    margin-top: .75rem;
+    line-height: 1.35;
+    text-align: center;
+}
+#sideCart .aec-sidecart-min-purchase small { font-size: 13px; }
+
+#sideCart .aec-sidecart-min-purchase__value,
+#sideCart .aec-sidecart-min-purchase__missing {
+    color: var(--aec-highlight) !important;
+    font-weight: 700;
+}
+
+/* Estado: pedido mínimo já atingido */
+#sideCart .aec-sidecart-min-purchase--ok {
+    background: var(--aec-ok-bg);
+    border-color: var(--aec-ok-border);
+}
+#sideCart .aec-sidecart-min-purchase--ok .aec-sidecart-min-purchase__value {
+    color: var(--aec-ok-text) !important;
+}
+
+#sideCart .alert-danger {
+    background-color: var(--aec-danger-bg) !important;
+    border-color: var(--aec-danger-border) !important;
+    border: 1px solid var(--aec-danger-border) !important;
+    padding: .85rem 1.25rem !important;
+    border-radius: .5rem !important;
+    font-size: 14px !important;
+    text-align: center !important;
+    line-height: 1.35 !important;
+    margin: 0 !important;
+    color: #9b2c2c !important;
+}
+
+
+/* ==========================================================
+   AVISO NA PÁGINA DE PRODUTO (opcional)
+   Texto configurável via --aec-product-notice / --aec-product-notice-mobile.
+   Ative definindo o texto no tema; deixe vazio ("") para ocultar.
+   ========================================================== */
+.product-buy.d-flex.flex-wrap.mt-3.no-gutters:after {
+    content: var(--aec-product-notice);
+    padding: 1rem 2rem;
+    background: var(--color-border);
+    margin: 1.2rem 0 0 0 !important;
+    width: 100%;
+    border: .1rem dashed var(--aec-highlight);
+    color: var(--aec-highlight);
+    border-radius: .25rem;
+    text-align: center;
+    font-family: var(--m-ff) !important;
+    font-weight: var(--m-fw) !important;
+    font-size: var(--m-fs) !important;
+    letter-spacing: var(--m-ls) !important;
+    text-transform: var(--m-tt) !important;
+    line-height: 1.4;
+}
+
+@media (max-width: 991px) {
+    .product-buy.d-flex.flex-wrap.mt-3.no-gutters:after {
+        content: var(--aec-product-notice-mobile);
+        padding: .9rem 1.4rem;
+        font-size: calc(var(--m-fs) - 10%) !important;
+    }
+}
+
+
+/* ==========================================================
+   AJUSTE DE VITRINE (opcional)
+   Mantém o preço alinhado ao padrão do card de produto.
+   ========================================================== */
+.product-card-price {
+    margin: 1.4rem 0 1.2rem 0 !important;
+    line-height: 1.35 !important;
+}
+.product-card-price.m-final .price {
+    font-family: var(--m-ff) !important;
+    font-weight: var(--m-fw) !important;
+    font-size: var(--m-fs) !important;
+    letter-spacing: var(--m-ls) !important;
+    text-transform: var(--m-tt) !important;
+    color: var(--color-primary) !important;
+    line-height: 1.35 !important;
+}
+.product-title.text-center.mb-4 {
+    margin-bottom: 1.2rem !important;
+    margin-right: 0 !important;
+}
+.product-card .product-title .text {
+    margin-right: 0 !important;
+    line-height: 1.35 !important;
+}
+.product-card .installments {
+    margin-top: .6rem !important;
+    line-height: 1.35 !important;
+    display: flex !important;
+    flex-wrap: wrap !important;
+    justify-content: center !important;
+    gap: .2rem;
+}
+.product-card-action { margin-top: 1.4rem !important; }
+.product-card { padding-bottom: 1rem !important; }
+
+@media (max-width: 991px) {
+    .product-card-price { margin: 1.2rem 0 1rem 0 !important; }
+    .product-title.text-center.mb-4 { margin-bottom: 1rem !important; }
+    .product-card-action { margin-top: 1.2rem !important; }
+}

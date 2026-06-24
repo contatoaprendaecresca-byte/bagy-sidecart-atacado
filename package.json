@@ -1,0 +1,25 @@
+{
+  "name": "bagy-sidecart-atacado",
+  "version": "1.0.0",
+  "description": "Carrinho lateral (SideCart) genérico para lojas de atacado em Bagy/Dooca. Pedido mínimo lido automaticamente da plataforma.",
+  "author": "APRENDA E CRESCE LTDA (CNPJ 39.827.887/0001-21)",
+  "license": "SEE LICENSE IN LICENSE",
+  "private": false,
+  "keywords": [
+    "bagy",
+    "dooca",
+    "sidecart",
+    "carrinho",
+    "atacado",
+    "ecommerce"
+  ],
+  "scripts": {
+    "build": "npm run build:js && npm run build:css",
+    "build:js": "terser src/aec-sidecart.js --compress --mangle --comments \"/^!/\" -o dist/aec-sidecart.min.js",
+    "build:css": "cleancss -O2 -o dist/aec-sidecart.min.css src/aec-sidecart.css"
+  },
+  "devDependencies": {
+    "clean-css-cli": "^5.6.3",
+    "terser": "^5.31.0"
+  }
+}
